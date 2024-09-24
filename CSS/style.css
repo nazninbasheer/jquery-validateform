@@ -1,0 +1,36 @@
+body, html{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin: 70px;
+    background-color: rgb(255, 211, 152);
+}
+form{
+    max-width: 500px;
+    padding: 40px;
+    background-color: rgb(255, 227, 104);
+    border-radius: 10px;
+    margin-right: 50px;
+    margin-bottom: 15px;
+    text-align: left;
+    display: block;
+}
+span{
+    padding: 10px;
+    color: red;
+    display: grid;
+}
+.btn
+{ font-weight: 600;
+    background-color: #503f13; 
+    color: white;
+    padding: 10px 13px;
+    border: none;
+    border-radius: 50px; 
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+label{
+    margin-bottom: 20px;
+}

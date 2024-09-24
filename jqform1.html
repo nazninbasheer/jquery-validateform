@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="CSS\style.css">
+    <title>Form 1</title>
+    <style>
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" action="" id="form1">
+        <div>
+            Name:  
+            <input type="text" placeholder="name" id="name">
+            <span id="error-name" class="error"></span>
+        </div>
+        <div>
+            Email: 
+            <input type="text" placeholder="email" id="email">
+            <span id="error-email" class="error"></span>
+        </div>
+        <div>
+            Date of Birth: 
+            <input type="date" placeholder="DOB" id="dob">
+            <span id="error-dob" class="error"></span>
+        </div>
+        <div>
+            <label for="address">Address:</label> 
+            <textarea name="address" id="address" rows="4" placeholder="Address"></textarea>
+            <span id="error-address" class="error"></span>
+        </div>
+        <div>
+            Gender: 
+            <input type="radio" value="male" name="gender" id="male"><label for="male">Male</label>
+            <input type="radio" value="female" name="gender" id="female"><label for="female">Female</label>
+            <span id="error-gender" class="error"></span>
+        </div>
+        <div>
+            Languages Known:
+            <input type="checkbox" value="html" name="lang" id="html"><label for="html">HTML</label>
+            <input type="checkbox" value="css" name="lang" id="css"><label for="css">CSS</label>
+            <input type="checkbox" value="JavaScript" name="lang" id="JavaScript"><label for="JavaScript">JavaScript</label>
+            <input type="checkbox" value="java" name="lang" id="java"><label for="java">JAVA</label>
+            <input type="checkbox" value="python" name="lang" id="python"><label for="python">PYTHON</label>
+        </div>
+        <div>
+            <input type="submit" value="Submit" class="btn">
+        </div>
+    </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        // jQuery validation script
+        $(document).ready(function() {
+            $('#form1').on('submit', function(event) {
+                // Prevent form submission
+                event.preventDefault();
+
+                // Clear previous error messages
+                $('#error-name').text('');
+                $('#error-email').text('');
+                $('#error-dob').text('');
+                $('#error-address').text('');
+                $('#error-gender').text('');
+
+                var isValid = true;
+
+                // Validate name
+                if ($('#name').val() === '') {
+                    $('#error-name').text('Please fill out this field');
+                    isValid = false;
+                }
+
+              // Validate email
+                var email = $('#email').val();
+                var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+                if (email === '') {
+                    $('#error-email').text('Please fill out this field');
+                    isValid = false;
+                } else if (!emailPattern.test(email)) {
+                    $('#error-email').text('Please enter a valid email address');
+                    isValid = false;
+                } else {
+                    $('#error-email').text(''); // Clear error if the email is valid
+                }
+
+
+                // Validate date of birth
+                if ($('#dob').val() === '') {
+                    $('#error-dob').text('Please fill out this field');
+                    isValid = false;
+                }
+
+                // Validate address
+                if ($('#address').val() === '') {
+                    $('#error-address').text('Please fill out this field');
+                    isValid = false;
+                }
+
+                // Validate gender
+                if (!$('input[name="gender"]:checked').val()) {
+                    $('#error-gender').text('Please select one');
+                    isValid = false;
+                }
+
+                // If all validations pass, show success message
+                if (isValid) {
+                    alert('Form submitted successfully!');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
